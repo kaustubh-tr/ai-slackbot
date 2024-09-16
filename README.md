@@ -17,7 +17,7 @@ The bot plays a key role in assisting users in their learning journey. It helps 
 Before starting, ensure the following:
 
 1. **Slack Account & Workspace**: Create a Slack account and a workspace to install and interact with the bot.
-2. **Python 3.x**: Installed on your local environment.
+2. **Python 3.11**: Installed on your local environment.
 3. **PostgreSQL Database**: Set up a PostgreSQL instance for data storage.
 4. **OpenAI/Cohere API Key**: These keys are required for generating responses and embeddings.
 5. **LangChain & Slack Bolt**: The bot uses these libraries for language processing and Slack integration.
@@ -41,17 +41,19 @@ To configure and deploy the Slack bot, follow these steps:
 1. Go to **Install App** and note the **Bot User OAuth Token** as `SLACK_BOT_TOKEN`.
 
 ### Step 4: Add Slash Commands
-Define the following commands under **Slash Commands**:
-- `/save-user-info`
-- `/delete-user-skill`
-- `/add-user-skill`
-- `/add-document-query`
+Define the following slash commands under **Slash Commands**:
+
+- `/save-user-info`: Presents a modal for saving user details (e.g., name, department).
+- `/add-user-skill`: Opens a modal for adding specific skills for the user.
+- `/delete-user-skill`: Opens a modal for deleting previously added skills.
+- `/add-document-query`: Processes documents by generating embeddings for document-based queries.
 
 These commands interact with Slack modals for user input and data processing.
 
 ### Step 5: Set OAuth Scopes
 In **OAuth & Permissions**, add these scopes:
-- `app_mentions:read`, `channels:history`, `channels:read`, `chat:write`, `commands`, `im:history`, `im:write`, `users.profile:read`, `users:read`, `users:read.email`.
+
+`app_mentions:read`, `channels:history`, `channels:read`, `chat:write`, `commands`, `im:history`, `im:write`, `users.profile:read`, `users:read`, `users:read.email`.
 
 ### Step 6: Reinstall App
 Whenever changes are made, reinstall the app under the **Install App** section.
@@ -89,7 +91,7 @@ BASE_DIR=<your_base_directory_of_documents>
 Clone this repository and install the dependencies:
 
 ```bash
-git clone https://github.com/your-username/ai-slackbot.git
+git clone https://github.com/kaustubh-tr/ai-slackbot.git
 cd ai-slackbot
 pip install -r requirements.txt
 ```
@@ -106,25 +108,11 @@ python app.py
 
 This command will launch the bot using the Slack API's Socket Mode.
 
-## Commands & Modal Usage
-
-### `/add-document-query`
-This command processes documents by generating embeddings and allows for document-based queries.
-
-### `/save-user-info`
-Presents a modal for saving user information like name, role, etc.
-
-### `/add-user-skill`
-Presents a modal to add specific skills for the user.
-
-### `/delete-user-skill`
-Presents a modal to delete skills previously added by the user.
-
 ## Useful Resources
 
-- **LangChain Documentation**: [Introduction](https://python.langchain.com/v0.2/docs/
+- **LangChain Documentation**: [Introduction](https://python.langchain.com/v0.2/docs/introduction/)
 - **Slack Modals**: [Slack Modals Documentation](https://api.slack.com/surfaces/modals)
-introduction/)
+
 - **Block Kit Builder**: [Try Block Kit Builder](https://app.slack.com/block-kit-builder/)
 - **Python Bolt**: [Bolt for Python](https://slack.dev/bolt-python/)
 
